@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Atividade 1: Filmes</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+<span> 1) Movies by Worldwide Gross </span>
+<div id="chart1"></div>
+<span> 2) Movies by Budget </span>
+<div id="chart2"></div>
+<span> 3) Movies by Profit </span>
+<div id="chart3"></div>
+
+<script type="text/javascript">
+	let compareByWorldwideGross = function (a, b) { 
+        return b.Worldwide_Gross_M - a.Worldwide_Gross_M;
+    };
+
+    let compareByBudget = function (a, b) { 
+        return b.Budget_M - a.Budget_M;
+    };
+
+    let compareByProfit = function (a, b) { 
+        return (b.Worldwide_Gross_M - b.Budget_M) - (a.Worldwide_Gross_M - a.Budget_M);
+    };
+
+    let sizeGross = function (d) {
+    	return (d.Worldwide_Gross_M / 2) + "px";
+    };
+
+    let sizeBudget = function (d) {
+    	return (d.Budget_M * 4) + "px";
+    };
+
+    let sizeProfit = function (d) {
+    	return ((d.Worldwide_Gross_M - d.Budget_M) / 2) + "px";
+    };
+
+    let nameGross = function (d) {
+    	return d.Film + ": " + d.Worldwide_Gross_M;
+    };
+
+    let nameBudget = function (d) {
+    	return d.Film + ": " + d.Budget_M;
+    };
+
+    let nameProfit = function (d) {
+    	return d.Film + ": " + (d.Worldwide_Gross_M - d.Budget_M);
+    };
+
+    function render1(data, comparator) {
+    	d3.select("#chart1").selectAll("div.h-bar")
+            .data(data)
+            .enter()
+            .append("div")
+            .attr("class", "h-bar")
+            .append("span");
+
+        d3.select("#chart1").selectAll("div.h-bar")
+            .data(data)
+            .attr("class", "h-bar")
+            .style("width", sizeGross)
+            .style("background-color", "steelblue")
+            .select("span")
+            .text(nameGross);
+
+         if(comparator)
+         	d3.select("#chart1")
+            .selectAll("div.h-bar") 
+            .sort(comparator);
+	}
+
+    function render2(data, comparator) {
+    	d3.select("#chart2").selectAll("div.h-bar")
+            .data(data)
+            .enter()
+            .append("div")
+            .attr("class", "h-bar")
+            .append("span");
+
+        d3.select("#chart2").selectAll("div.h-bar")
+            .data(data)
+            .attr("class", "h-bar")
+            .style("width", sizeBudget)
+            .style("background-color", "crimson")
+            .select("span")
+            .text(nameBudget);
+
+         if(comparator)
+            d3.select("#chart2")
+            .selectAll("div.h-bar") 
+            .sort(comparator);
+    }
+
+    function render3(data, comparator) {
+    	d3.select("#chart3").selectAll("div.h-bar")
+            .data(data)
+            .enter()
+            .append("div")
+            .attr("class", "h-bar")
+            .append("span");
+
+        d3.select("#chart3").selectAll("div.h-bar")
+            .data(data)
+            .attr("class", "h-bar")
+            .style("width", sizeProfit)
+            .style("background-color", "forestgreen")
+            .select("span")
+            .text(nameProfit);
+
+         if(comparator)
+            d3.select("#chart3")
+            .selectAll("div.h-bar") 
+            .sort(comparator);
+    }
+
+    d3.json("data/movies.json").then(function(json){ 
+        render1(json, compareByWorldwideGross);
+        render2(json, compareByBudget);
+        render3(json, compareByProfit);
+    });
+</script>
+</body>
+</html>
