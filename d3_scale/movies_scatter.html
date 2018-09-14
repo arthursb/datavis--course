@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Scatterplot</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<span>
+    <h1>
+        Scatterplot 
+    </h1>
+    
+    <h3>
+        1. Existe alguma correlação entre essas variáveis? <br>
+        - Sim, quanto menor o budget e maior o gross, maior será o lucro do filme <br>
+        2. Existem outliers? <br>
+        - Sim, os elementos mais ao alto, fundo e direita <br>
+        3. Quais? <br>
+        - Avatar, que teve um lucro alto <br>
+        - Dois filmes da série Crepúsculo, que obtiveram bom resultado com baixo orçamento <br>
+        - Piratas do Caribe, Harry Potter e Homem-Aranha 3 tiveram altos orçamentos <br>
+    </h1>
+</span>
+<body>
+
+<div id="chart"></div>
+<script type="text/javascript">
+    d3.json("data/movies.json").then(function(data){ 
+        let margin = {top: 60, right: 60, bottom: 60, left: 60};
+        let w = 1000 - margin.left - margin.right;
+        let h = 1000 - margin.top - margin.bottom;
+
+    let svg = d3.select("#chart")
+            .append("svg")
+                .attr("width", w + margin.left + margin.right)
+                .attr("height", h + margin.top + margin.bottom)
+            .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    let xScale = d3.scaleLinear()
+        .domain([0, d3.max(data, function(d) {
+            return d.Worldwide_Gross_M;
+        })])
+        .range([0,w]);
+
+    let xAxis = d3.axisBottom()
+        .scale(xScale)
+        .ticks(10);             
+
+    let yScale = d3.scaleLinear()
+        .domain([0, d3.max(data, function(d) {
+            return d.Budget_M;
+        })])
+        .range([h,0]);
+
+    let yAxis = d3.axisLeft()
+        .scale(yScale)
+        .ticks(10); 
+
+    svg.selectAll("text")
+        .data(data)
+        .enter()
+        .append("text")
+        .attr("x", function(d) {
+            return xScale(d.Worldwide_Gross_M) + 10;
+        })
+        .attr("y", function(d) {
+            return yScale(d.Budget_M) - 10;
+        })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "11px")
+        .attr("fill", "red")
+        .text(function(d) {
+            return d.Film;
+        });
+
+    svg.append("g")
+        .call(xAxis)
+        .call(yAxis);
+
+    svg.append("g")
+        .attr("transform", "translate(0," + h + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("transform", "translate(0," + w + ")")
+        .call(yAxis);
+
+    svg.append("text")
+        .attr("transform", "translate(" + (w/2) + "," + (h + margin.bottom) + ")")
+        .style("text-anchor", "middle")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "12px")
+        .text("Worldwide_Gross");
+
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x",0 - (h / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "12px")
+        .text("Budget");
+
+
+    svg.selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("cx", function(d) {
+                return xScale(d.Worldwide_Gross_M);
+            })
+            .attr("cy", function(d) {
+                return yScale(d.Budget_M);
+            })
+            .attr("r", 5);
+
+
+});
+
+</script>
+</body>
+</html>
