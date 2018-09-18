@@ -3,3 +3,6 @@
 
 ## Atividade 2 (Scatterplot)
 [movies_scatter.html](d3_scale/movies_scatter.html)<br>
+
+## Atividade 3 (Update)
+[01_scatterplot.html](d3_update/01_scatterplot.html)<br>
