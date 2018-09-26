@@ -6,3 +6,8 @@
 
 ## Atividade 3 (Update)
 [01_scatterplot.html](d3_update/01_scatterplot.html)<br>
+
+## Atividade 4 (DC + Crossfilter)
+[acoes.html](d3_crossfilter/acoes.html)<br>
+[movies_bar1.html](d3_crossfilter/movies_bar1.html)<br>
+[movies_bar2.html](d3_crossfilter/movies_bar2.html)<br>
