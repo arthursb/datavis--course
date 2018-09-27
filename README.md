@@ -11,3 +11,6 @@
 [acoes.html](d3_crossfilter/acoes.html)<br>
 [movies_bar1.html](d3_crossfilter/movies_bar1.html)<br>
 [movies_bar2.html](d3_crossfilter/movies_bar2.html)<br>
+
+## Atividade 5 (DC + Crossfilter)
+[earthquakes.html] (d3_crossfilter_2/earthquakes.html)<br>
