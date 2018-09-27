@@ -13,4 +13,5 @@
 [movies_bar2.html](d3_crossfilter/movies_bar2.html)<br>
 
 ## Atividade 5 (DC + Crossfilter)
-[earthquakes.html] (d3_crossfilter_2/earthquakes.html)<br>
+[movies_bar2.html](d3_crossfilter/movies_bar2.html)<br>
+[earthquakes.html](d3_crossfilter_2/earthquakes.html)<br>
