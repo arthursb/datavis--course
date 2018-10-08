@@ -14,3 +14,6 @@
 
 ## Atividade 5 (DC + Crossfilter)
 [earthquakes.html](d3_crossfilter_2/earthquakes.html)<br>
+
+## Atividade 6 (Chicago Crimes)
+[chicago.html](d3_chicago/chicago.html)<br>
