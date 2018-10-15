@@ -17,3 +17,7 @@
 
 ## Atividade 6 (Chicago Crimes)
 [chicago.html](d3_chicago/chicago.html)<br>
+
+## Atividade 7 (Force Simulation)
+[songs.html](d3_networks_trees/songs.html)<br>
+[lesmiserables.html](d3_networks_trees/lesmiserables.html)<br>
