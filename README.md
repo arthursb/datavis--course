@@ -25,3 +25,7 @@
 ## Atividade 8 (Color Scale)
 [usa.html](d3_color/usa.html)<br>
 [crimes.html](d3_color/crimes.html)<br>
+
+## Atividade 9 (interatividade)
+[usa.html](d3_interactive/usa.html)<br>
+[earthquakes.html](d3_interactive/earthquakes.html)<br>
