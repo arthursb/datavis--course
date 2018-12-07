@@ -31,4 +31,4 @@
 [earthquakes.html](d3_interactive/earthquakes.html)<br>
 
 ## Trabalho da Disciplina
-[https://fabianojgf.github.io/project-vis/]
+https://fabianojgf.github.io/project-vis/
