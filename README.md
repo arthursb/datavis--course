@@ -29,3 +29,6 @@
 ## Atividade 9 (interatividade)
 [usa.html](d3_interactive/usa.html)<br>
 [earthquakes.html](d3_interactive/earthquakes.html)<br>
+
+## Trabalho da Disciplina
+[https://fabianojgf.github.io/project-vis/]
